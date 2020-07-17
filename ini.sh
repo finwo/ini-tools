@@ -34,6 +34,7 @@ while read line; do
     SECTION=$(echo $line | sed -e 's/\[\(.*\)\]/\1/')
     SECTION=${SECTION##*( )}
     SECTION=${SECTION%%*( )}
+    SECTION="${SECTION}."
     continue
   fi
 
@@ -45,9 +46,9 @@ while read line; do
 
   # Output searched or all
   if [[ -z "${2}" ]]; then
-    echo "${SECTION}.${NAME}=${VALUE}"
+    echo "${SECTION}${NAME}=${VALUE}"
   fi
-  if [[ "${SECTION}.${NAME}" = "${2}" ]]; then
+  if [[ "${SECTION}${NAME}" = "${2}" ]]; then
     echo "${VALUE}"
   fi
 
