@@ -36,7 +36,7 @@ while [ "$#" -gt 0 ]; do
       ;;
     -c|--config)
       shift
-      PARTIALARGS="${PARTIALARGS} -c '${1}'"
+      PARTIALARGS="${PARTIALARGS} -c ${1}"
       if [[ -f "${1}" ]]; then
         while IFS='=' read key value; do
           TOKENS["$key"]="$value"
@@ -45,7 +45,7 @@ while [ "$#" -gt 0 ]; do
       ;;
     -p|--partials)
       shift
-      PARTIALARGS="${PARTIALARGS} -p '${1}'"
+      PARTIALARGS="${PARTIALARGS} -p ${1}"
       if [[ -d "${1}" ]]; then
         while IFS=':' read name filename; do
           PARTIALS["$name"]="${filename}"
