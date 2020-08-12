@@ -37,7 +37,7 @@ while [ "$#" -gt 0 ]; do
       exit 0
       ;;
     --update)
-      curl -L https://raw.githubusercontent.com/finwo/ini-tools/master/template.sh > "${DIR}/${PROGNAME}"
+      curl -L -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/finwo/ini-tools/master/template.sh > "${DIR}/${PROGNAME}"
       exit $?
       ;;
     -c|--config)
