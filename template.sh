@@ -12,10 +12,12 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 usage="
 Usage:
   ${PROGNAME} -h|--help
+  ${PROGNAME} --update
   ${PROGNAME} [-c|--config config_file] [-p|--partials partials_dir] template_file [...template_file]
 
 Options:
   -h --help             Show this help text
+     --update           Perform a self-update
   -c --config <path>    Specify config file
   -p --partials <path>  Specify partials directory
 "
@@ -33,6 +35,9 @@ while [ "$#" -gt 0 ]; do
     -h|--help)
       echo "$usage"
       exit 0
+      ;;
+    --update)
+      curl -L https://raw.githubusercontent.com/finwo/ini-tools/master/template.sh > "${DIR}/${PROGNAME}"
       ;;
     -c|--config)
       shift
