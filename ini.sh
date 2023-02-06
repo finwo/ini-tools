@@ -41,7 +41,7 @@ while read line; do
   # Output found variable
   NAME=${line%%=*}
   NAME=${NAME%%*( )}
-  VALUE=${line##*=}
+  VALUE=${line#*=}
   VALUE=${VALUE##*( )}
 
   # Output searched or all
